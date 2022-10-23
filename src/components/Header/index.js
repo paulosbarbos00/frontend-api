@@ -7,7 +7,7 @@ export default function Header() {
         <header>
             <div className='container container-header flex space-between align-items-center'>
                 <Link className='logo' to='/'>
-                    Filmaria
+                    Estante de Livros
                 </Link>
                 <Nav />
             </div>

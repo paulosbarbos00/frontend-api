@@ -1,45 +1,45 @@
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-import Movie from '../../components/Movie';
+import Livro from '../../components/Livro';
 import './style.css';
 
 export default function Home() {
-    const [movies, setMovies] = useState([]);
+    const [livros, setlivros] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        async function getFilmes() {
-            const response = await api.get('r-api/?api=filmes');
-            setMovies(response.data);
+        async function getLivros() {
+            const response = await api.get('r-api/?api=livros');
+            setLivros(response.data);
             setLoading(false);
         }
 
-        getFilmes();
+        getLivros();
     }, []);
 
     if (loading) {
         return (
             <div className='container flex justify-content-center'>
-                <h2>Carregando filmes...</h2>
+                <h2>Carregando livros...</h2>
             </div>
         );
     }
 
     return (
         <div className='container mt-24 mb-24'>
-            <div className='movie-list'>
-                {movies.map((movie) => {
+            <div className='livro-list'>
+                {livro.map((livro) => {
                     return (
-                        <Movie
-                            key={movie.id}
-                            id={movie.id}
-                            title={movie.nome}
-                            poster={movie.foto}
+                        <Livro
+                            key={livro.id}
+                            id={livro.id}
+                            title={livro.nome}
+                            poster={livro.foto}
                         />
                     );
                 })}
 
-                {movies.length === 0 && <h2>Não foram encontrados filmes</h2>}
+                {livro.length === 0 && <h2>Não foram encontrados livros</h2>}
             </div>
         </div>
     );
